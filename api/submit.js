@@ -21,7 +21,10 @@ export default async function handler(req, res) {
 
         drawText(`EXAMEN BARREAU - Inside RP`);
         drawText(``);
-        drawText(`Nom: ${user.username}`);
+        drawText(`Nom: ${nom}`);
+        drawText(`Prénom: ${prenom}`);
+        drawText(`Discord: ${user.username}`);
+        drawText(`ID: ${user.id}`);
         drawText(`ID: ${user.id}`);
         drawText(`Temps: ${minutes} min ${seconds} sec`);
         drawText(``);
@@ -39,7 +42,10 @@ export default async function handler(req, res) {
         formData.append("file", new Blob([pdfBytes]), "examen.pdf");
 
         formData.append("payload_json", JSON.stringify({
-            content: `📚 Nouvel examen de ${user.username}`
+            content: `📚 Nouvel examen
+
+            👤 ${prenom} ${nom}
+            💬 Discord: ${user.username}`
         }));
 
         await fetch("https://discord.com/api/webhooks/1487531036295561437/xKnt5qA12SWCQd3eRGfvdgwK50WvL22Yg-FIYrisDpeDByaE0Bs6KNi1tJnPnL-lQjRY", {
