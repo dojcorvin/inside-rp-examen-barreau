@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
         page.drawImage(dojImage, {
             x: 470,   
-            y: 750,
+            y: 680,
             width: 100,
             height: 100
         });
