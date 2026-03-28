@@ -100,7 +100,7 @@ export default async function handler(req, res) {
             content: `📚 Examen Barreau RP\n👤 ${prenom} ${nom}`
         }));
 
-        const discordRes = await fetch("TON_WEBHOOK", {
+        const discordRes = await fetch("https://discord.com/api/webhooks/1487531036295561437/xKnt5qA12SWCQd3eRGfvdgwK50WvL22Yg-FIYrisDpeDByaE0Bs6KNi1tJnPnL-lQjRY", {
             method: "POST",
             body: formData
         });
