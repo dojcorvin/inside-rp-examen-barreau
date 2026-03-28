@@ -24,3 +24,16 @@ button {
     border: none;
     cursor: pointer;
 }
+
+identity {
+    margin-bottom: 20px;
+}
+
+identity input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    border: 1px solid gold;
+    background: #1a1a1a;
+    color: white;
+}
