@@ -43,17 +43,17 @@ export default async function handler(req, res) {
             y -= size + 5;
         };
 
-        // 🏛️ LOGO DOJ (droite propre)
+        // 🏛️ LOGO DOJ 
         const dojBytes = await fetch("https://raw.githubusercontent.com/dojcorvin/inside-rp-examen-barreau/main/Tampon%20-%20DOJ%20Noir.png")
             .then(res => res.arrayBuffer());
 
         const dojImage = await pdfDoc.embedPng(dojBytes);
 
         page.drawImage(dojImage, {
-            x: 470,   // ← moins collé au bord
-            y: 680,
-            width: 80,
-            height: 80
+            x: 470,   
+            y: 750,
+            width: 100,
+            height: 100
         });
 
         // 🏛️ TITRES CENTRÉS
