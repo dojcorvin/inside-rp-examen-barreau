@@ -30,5 +30,5 @@ export default async function handler(req, res) {
 
     const user = await userRes.json();
 
-    return res.redirect(`/frontend/index.html?user=${encodeURIComponent(JSON.stringify(user))}`);
+    return res.redirect(`/?user=${encodeURIComponent(JSON.stringify(user))}`);
 }
