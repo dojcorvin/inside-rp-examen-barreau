@@ -30,32 +30,48 @@ export default async function handler(req, res) {
             y -= size + 5;
         };
 
-        // 🏛️ LOGO DOJ
+        // 🏛️ LOGO DOJ (droite propre)
         const dojBytes = await fetch("https://raw.githubusercontent.com/dojcorvin/inside-rp-examen-barreau/main/Tampon%20-%20DOJ%20Noir.png")
             .then(res => res.arrayBuffer());
 
         const dojImage = await pdfDoc.embedPng(dojBytes);
 
         page.drawImage(dojImage, {
-            x: 40,
+            x: 470,   // ← moins collé au bord
             y: 700,
-            width: 70,
-            height: 70
+            width: 80,
+            height: 80
         });
 
-        // 🏛️ TITRE
-        drawText("DEPARTMENT OF JUSTICE", 150, 16, true);
-        drawText("STATE OF SAN ANDREAS", 170, 12);
+        // 🏛️ TITRES CENTRÉS
+        const title = "DEPARTMENT OF JUSTICE";
+        const subtitle = "STATE OF SAN ANDREAS";
 
-        // Ligne
+        const titleWidth = boldFont.widthOfTextAtSize(title, 16);
+        const subtitleWidth = normalFont.widthOfTextAtSize(subtitle, 12);
+
+        page.drawText(title, {
+            x: (600 - titleWidth) / 2,
+            y: 750,
+            size: 16,
+            font: boldFont
+        });
+
+        page.drawText(subtitle, {
+            x: (600 - subtitleWidth) / 2,
+            y: 730,
+            size: 12,
+            font: normalFont
+        });
+
+        // 📏 TRAIT
         page.drawLine({
-            start: { x: 50, y: y },
-            end: { x: 550, y: y },
+            start: { x: 50, y: 710 },
+            end: { x: 550, y: 710 },
             thickness: 1,
-            color: rgb(0, 0, 0)
         });
 
-        y -= 20;
+        y = 680;
 
         // 👤 INFOS
         drawText(`Nom : ${nom} ${prenom}`, 50, 12, true);
@@ -63,26 +79,31 @@ export default async function handler(req, res) {
         drawText(`ID : ${user.id}`);
         drawText(`Temps : ${minutes} min ${seconds} sec`);
 
-        y -= 10;
+        // ⏳ ESPACE AVANT BARRE ROUGE
+        y -= 20;
 
         // 🔴 BARRE ROUGE
         page.drawRectangle({
             x: 0,
             y: y,
             width: 600,
-            height: 25,
+            height: 30,
             color: rgb(0.7, 0, 0)
         });
 
-        page.drawText("EXAMEN DU BARREAU", {
-            x: 180,
-            y: y + 6,
+        // 🎯 TEXTE CENTRÉ PARFAITEMENT
+        const examText = "EXAMEN DU BARREAU";
+        const examWidth = boldFont.widthOfTextAtSize(examText, 14);
+
+        page.drawText(examText, {
+            x: (600 - examWidth) / 2,
+            y: y + 8,
             size: 14,
             font: boldFont,
             color: rgb(1, 1, 1)
         });
 
-        y -= 40;
+        y -= 45;
 
         // 📋 QUESTIONS
         answers.forEach((a, i) => {
