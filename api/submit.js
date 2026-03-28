@@ -14,6 +14,19 @@ export default async function handler(req, res) {
         const pdfDoc = await PDFDocument.create();
         const page = pdfDoc.addPage([600, 800]);
 
+        // 🧾 BACKGROUND
+        const bgBytes = await fetch("https://raw.githubusercontent.com/dojcorvin/inside-rp-examen-barreau/main/doj_a4_background.png")
+            .then(res => res.arrayBuffer());
+        
+        const bgImage = await pdfDoc.embedPng(bgBytes);
+        
+        page.drawImage(bgImage, {
+            x: 0,
+            y: 0,
+            width: 600,
+            height: 800,
+        });
+
         const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
         const normalFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
