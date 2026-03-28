@@ -8,8 +8,8 @@ export default async function handler(req, res) {
     }
 
     const params = new URLSearchParams();
-    params.append("client_id", "TON_CLIENT_ID");
-    params.append("client_secret", "TON_CLIENT_SECRET");
+    params.append("client_id", "1487533972127744001");
+    params.append("client_secret", "6cPvij_8xU0169BlvNXiztkYqkFu82Oz");
     params.append("grant_type", "authorization_code");
     params.append("code", code);
     params.append("redirect_uri", "https://inside-rp-examen-barreau.vercel.app/api/auth");
