@@ -39,10 +39,10 @@ export default async function handler(req, res) {
         const logoImage = await pdfDoc.embedPng(logoBytes);
 
         page.drawImage(logoImage, {
-            x: 400,
-            y: 680,
-            width: 150,
-            height: 150
+            x: 450,
+            y: 720,
+            width: 80,
+            height: 80
         });
 
         // 🏛️ TITRE
