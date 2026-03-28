@@ -93,10 +93,6 @@ export default async function handler(req, res) {
 
         y -= 15;
 
-        drawText(`Discord : ${user.username}`);
-        drawText(`ID : ${user.id}`);
-        drawText(`Temps : ${minutes} min ${seconds} sec`);
-
         y -= 10;
 
         // 🔴 BARRE ROUGE
@@ -106,14 +102,6 @@ export default async function handler(req, res) {
             width: 600,
             height: 30,
             color: rgb(0.8, 0, 0)
-        });
-        
-        page.drawText("EXAMEN DU BARREAU", {
-            x: 170,
-            y: 608,
-            size: 14,
-            font: boldFont,
-            color: rgb(1, 1, 1)
         });
 
         page.drawText("EXAMEN DU BARREAU", {
