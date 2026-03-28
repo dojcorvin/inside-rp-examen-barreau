@@ -26,58 +26,58 @@ export default async function handler(req, res) {
             y -= size + 5;
         };
 
-// 🏛️ LOGO DOJ (gauche)
-const dojBytes = await fetch("https://raw.githubusercontent.com/dojcorvin/inside-rp-examen-barreau/main/Tampon%20-%20DOJ%20Noir.png")
-    .then(res => res.arrayBuffer());
-
-const dojImage = await pdfDoc.embedPng(dojBytes);
-
-page.drawImage(dojImage, {
-    x: 50,
-    y: 700,
-    width: 80,
-    height: 80
-});
-
-// 🏛️ TITRE (droite)
-page.drawText("DEPARTMENT OF JUSTICE", {
-    x: 150,
-    y: 750,
-    size: 16,
-    font: boldFont
-});
-
-page.drawText("STATE OF SAN ANDREAS", {
-    x: 160,
-    y: 730,
-    size: 12,
-    font: normalFont
-});
-
-// 📄 INFOS (colonne droite)
-let infoY = 690;
-
-const drawInfo = (text) => {
-    page.drawText(text, {
-        x: 150,
-        y: infoY,
-        size: 12,
-        font: normalFont
-    });
-    infoY -= 18;
-};
-
-drawInfo(`Nom : ${nom} ${prenom}`);
-drawInfo(`Discord : ${user.username}`);
-drawInfo(`ID : ${user.id}`);
-drawInfo(`Temps : ${minutes} min ${seconds} sec`);
-
-// 🔲 TRAIT COMPLET
-page.drawLine({
-    start: { x: 50, y: 640 },
-    end: { x: 550, y: 640 },
-    thickness: 1,
-});
+        // 🏛️ LOGO DOJ (gauche)
+        const dojBytes = await fetch("https://raw.githubusercontent.com/dojcorvin/inside-rp-examen-barreau/main/Tampon%20-%20DOJ%20Noir.png")
+            .then(res => res.arrayBuffer());
+        
+        const dojImage = await pdfDoc.embedPng(dojBytes);
+        
+        page.drawImage(dojImage, {
+            x: 50,
+            y: 700,
+            width: 80,
+            height: 80
+        });
+        
+        // 🏛️ TITRE (droite)
+        page.drawText("DEPARTMENT OF JUSTICE", {
+            x: 150,
+            y: 750,
+            size: 16,
+            font: boldFont
+        });
+        
+        page.drawText("STATE OF SAN ANDREAS", {
+            x: 160,
+            y: 730,
+            size: 12,
+            font: normalFont
+        });
+        
+        // 📄 INFOS (colonne droite)
+        let infoY = 690;
+        
+        const drawInfo = (text) => {
+            page.drawText(text, {
+                x: 150,
+                y: infoY,
+                size: 12,
+                font: normalFont
+            });
+            infoY -= 18;
+        };
+        
+        drawInfo(`Nom : ${nom} ${prenom}`);
+        drawInfo(`Discord : ${user.username}`);
+        drawInfo(`ID : ${user.id}`);
+        drawInfo(`Temps : ${minutes} min ${seconds} sec`);
+        
+        // 🔲 TRAIT COMPLET
+        page.drawLine({
+            start: { x: 50, y: 640 },
+            end: { x: 550, y: 640 },
+            thickness: 1,
+        });
 
         y = 680;
 
@@ -102,10 +102,18 @@ page.drawLine({
         // 🔴 BARRE ROUGE
         page.drawRectangle({
             x: 0,
-            y: y,
+            y: 600,
             width: 600,
             height: 30,
             color: rgb(0.8, 0, 0)
+        });
+        
+        page.drawText("EXAMEN DU BARREAU", {
+            x: 170,
+            y: 608,
+            size: 14,
+            font: boldFont,
+            color: rgb(1, 1, 1)
         });
 
         page.drawText("EXAMEN DU BARREAU", {
