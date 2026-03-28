@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
     const formatted = answers.map((a, i) => `Q${i + 1}: ${a}`).join("\n");
 
-    await fetch("TON_WEBHOOK", {
+    await fetch("https://discord.com/api/webhooks/1487531036295561437/xKnt5qA12SWCQd3eRGfvdgwK50WvL22Yg-FIYrisDpeDByaE0Bs6KNi1tJnPnL-lQjRY", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
