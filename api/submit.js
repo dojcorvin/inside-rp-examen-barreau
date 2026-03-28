@@ -2,7 +2,7 @@ import { PDFDocument, StandardFonts } from 'pdf-lib';
 
 export default async function handler(req, res) {
     try {
-        const { user, answers, time } = req.body;
+        const { user, answers, time, prenom, nom } = req.body;
 
         const minutes = Math.floor(time / 60000);
         const seconds = Math.floor((time % 60000) / 1000);
