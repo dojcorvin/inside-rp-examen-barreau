@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
         page.drawImage(dojImage, {
             x: 470,   // ← moins collé au bord
-            y: 700,
+            y: 680,
             width: 80,
             height: 80
         });
