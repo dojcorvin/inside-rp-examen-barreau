@@ -112,18 +112,33 @@ function startTimer() {
 
 // 📩 SUBMIT
 async function submitExam() {
+
+    // 🔐 Récupération identité
+    const prenom = document.getElementById("prenom").value;
+    const nom = document.getElementById("nom").value;
+
+    // ⚠️ Vérification
+    if (!prenom || !nom) {
+        alert("Veuillez renseigner votre nom et prénom.");
+        return;
+    }
+
+    // 📋 Réponses
     const answers = questions.map((_, i) => {
         return document.getElementById("q" + i).value;
     });
 
+    // ⏱️ Temps
     const time = Date.now() - startTime;
 
+    // 📩 Envoi
     await fetch("/api/submit", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ user, answers, time })
+        body: JSON.stringify({ user, answers, time, prenom, nom })
     });
 
+    // 🧹 reset
     localStorage.removeItem("startTime");
 
     document.body.innerHTML = "<h2>Examen envoyé</h2>";
