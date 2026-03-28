@@ -3,7 +3,7 @@ export default async function handler(req, res) {
 
     if (!code) {
         return res.redirect(
-            "https://discord.com/api/oauth2/authorize?client_id=TON_CLIENT_ID&redirect_uri=TON_URL_VERCEL/api/auth&response_type=code&scope=identify"
+            "https://discord.com/api/oauth2/authorize?client_id=1487533972127744001&redirect_uri=https://inside-rp-examen-barreau.vercel.app/api/auth&response_type=code&scope=identify"
         );
     }
 
